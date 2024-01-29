@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FrontHomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +16,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('front')->name('front.')->group(function(){
+Route::prefix('user')->name('front.')->group(function(){
     Route::get('/',FrontHomeController::class)->name('index')->middleware('auth');
-    Route::view('/login','front.auth.login');
-    Route::view('/register','front.auth.register');
-    Route::view('/forget-password','front.auth.forget-password');
+    
 });
 
 require __DIR__.'/auth.php';
+
+//-----------ADMIN DASHBOARD---------------////
+
+
+Route::prefix('admin')->name('admin.')->group(function(){
+    Route::get('/',AdminHomeController::class)->name('index');
+    Route::view('/login','admin.auth.login');
+    Route::view('/register','admin.auth.register');
+    Route::view('/forget-password','admin.auth.forget-password');
+
+    require __DIR__.'/AdminAuth.php';
+});
 
 
 
