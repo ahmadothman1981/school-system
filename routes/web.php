@@ -4,6 +4,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FrontHomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\UsersProfilesController;
+use App\Http\Controllers\Admin\ClassesController;
+use App\Http\Controllers\Admin\TeacherController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -50,5 +54,33 @@ Route::get('/', function () {
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
+
+///////////////////ADMIN DASHBOARD ////////////////////
+Route::prefix('details')->name('admin.')->group(function(){
+    Route::get('/students-profiles',[UsersProfilesController::class,'show'])->name('users-profiles');
+    Route::get('/create-student',[UsersProfilesController::class,'create'])->name('student-create');
+    Route::post('/store-student',[UsersProfilesController::class,'store'])->name('store-student');
+
+//CLASSES ALL CRUD 
+    Route::get('/classes',[ClassesController::class,'AllClasses'])->name('classes');
+    Route::get('/create-class',[ClassesController::class,'create'])->name('create-class');
+    Route::post('/store-class',[ClassesController::class,'store'])->name('store-class');
+    Route::get('/edit-class/{id}',[ClassesController::class,'edit'])->name('edit-class');
+    Route::post('/update-class',[ClassesController::class,'update'])->name('update-class');
+    Route::get('/delete/{id}',[ClassesController::class,'delete'])->name('delete-class');
+
+
+
+
+    Route::get('/teachers',[TeacherController::class,'allTeachers'])->name('teachers');
+    Route::get('/teacher-create',[TeacherController::class,'create'])->name('teacher-create');
+    Route::post('/store-teacher',[TeacherController::class,'store'])->name('store-teacher');
+
+
+  
+  
+
+    
+});
 
 

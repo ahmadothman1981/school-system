@@ -9,7 +9,7 @@
     data-sidebar-position="fixed" data-header-position="fixed">
     <!-- Sidebar Start -->
         @include('admin.partials.aside')
-s
+
     <!--  Sidebar End -->
     <!--  Main wrapper -->
     <div class="body-wrapper">

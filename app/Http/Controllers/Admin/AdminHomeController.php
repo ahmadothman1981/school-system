@@ -12,6 +12,6 @@ class AdminHomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('admin.home');
+        return view('admin.home-arabic');
     }
 }

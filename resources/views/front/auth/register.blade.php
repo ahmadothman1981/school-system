@@ -59,6 +59,21 @@
                   <input type="email" name="email" :value="old('email')" class="form-control" id="email"  placeholder="Enter your email" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
+                <div class="mb-3">
+                  <label for="phone" class="form-label" :value="__('Phone')">Phone</label>
+                  <input type="number" name="phone" :value="old('phone')" class="form-control" id="email"  placeholder="Enter your Phone" />
+                    <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+                </div>
+                <div class="mb-3">
+                  <label for="address" class="form-label" :value="__('address')">Address</label>
+                  <input type="text" name="address" :value="old('address')" class="form-control" id="email"  placeholder="Enter your Adress" />
+                    <x-input-error :messages="$errors->get('address')" class="mt-2" />
+                </div>
+                <div class="mb-3">
+                  <label for="date_of_birth" class="form-label" :value="__('date_of_birth')">Date Of Birth</label>
+                  <input type="date" name="date_of_birth" :value="old('date_of_birth')" class="form-control" id="email"  placeholder="Enter your Birth Day" />
+                    <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2" />
+                </div>
                 <div class="mb-3 form-password-toggle">
                   <label class="form-label" for="password" :value="__('Password')">Password</label>
                   <div class="input-group input-group-merge">
