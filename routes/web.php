@@ -67,16 +67,17 @@ Route::prefix('details')->name('admin.')->group(function(){
     Route::post('/store-class',[ClassesController::class,'store'])->name('store-class');
     Route::get('/edit-class/{id}',[ClassesController::class,'edit'])->name('edit-class');
     Route::post('/update-class',[ClassesController::class,'update'])->name('update-class');
-    Route::get('/delete/{id}',[ClassesController::class,'delete'])->name('delete-class');
+    Route::get('/delete-class/{id}',[ClassesController::class,'delete'])->name('delete-class');
 
 
 
-
+//Teacher ALL CRUD
     Route::get('/teachers',[TeacherController::class,'allTeachers'])->name('teachers');
     Route::get('/teacher-create',[TeacherController::class,'create'])->name('teacher-create');
     Route::post('/store-teacher',[TeacherController::class,'store'])->name('store-teacher');
-
-
+    Route::get('/edit-teacher/{id}',[TeacherController::class,'edit'])->name('edit-teacher');
+    Route::post('/update-teacher',[TeacherController::class,'update'])->name('update-teacher');
+    Route::get('/delete-teacher/{id}',[TeacherController::class,'delete'])->name('delete-teacher');
   
   
 

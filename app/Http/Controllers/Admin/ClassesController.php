@@ -39,6 +39,10 @@ class ClassesController extends Controller
     public function update(Request $request)
     {
         $ClassId = $request->id;
+        $request->validate([
+            'name'=>['required','string','max:255'],
+        ]);
+        
         Classes::findOrFail($ClassId)->update([
             'name'=>$request->name,
         ]);
