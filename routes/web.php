@@ -62,12 +62,15 @@ Route::prefix('details')->name('admin.')->group(function(){
     Route::post('/store-student',[UsersProfilesController::class,'store'])->name('store-student');
 
 //CLASSES ALL CRUD 
-    Route::get('/classes',[ClassesController::class,'AllClasses'])->name('classes');
-    Route::get('/create-class',[ClassesController::class,'create'])->name('create-class');
-    Route::post('/store-class',[ClassesController::class,'store'])->name('store-class');
-    Route::get('/edit-class/{id}',[ClassesController::class,'edit'])->name('edit-class');
-    Route::post('/update-class',[ClassesController::class,'update'])->name('update-class');
-    Route::get('/delete-class/{id}',[ClassesController::class,'delete'])->name('delete-class');
+Route::controller(ClassesController::class)->prefix('classes')->group(function(){
+    Route::get('/','index')->name('classes');
+    Route::view('/create','classes.class_create')->name('create-class');
+    Route::post('/store','store')->name('store-class');
+    Route::get('/{id}/edit','edit')->name('edit-class');
+    Route::post('/update','update')->name('update-class');
+    Route::get('/delete/{id}','delete')->name('delete-class');
+});
+   
 
 
 

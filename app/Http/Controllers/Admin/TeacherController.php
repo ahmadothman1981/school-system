@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Teachers;
+use App\Models\Teacher;
 class TeacherController extends Controller
 {
     public function allTeachers()
     {
-        $teachers = Teachers::all();
+        $teachers = Teacher::all();
         return view('teachers.teachers',compact('teachers'));
     }
     public function create()
@@ -25,18 +25,18 @@ class TeacherController extends Controller
             'phone'=>['required','string','max:255'],
         ]);
         
-        $teacher = Teachers::create([
+        $teacher = Teacher::create([
            'name'=>$request->name,
            'email'=>$request->email,
            'phone'=>$request->phone, 
         ]);
-        $teachers = Teachers::all();
+        $teachers = Teacher::all();
 
-        return view('teachers.teachers',compact('teachers'));
+        return view('teachers.teachers',compact('teachers'))->with('success','Teacher Created Successfully');
     }
     public function edit($id)
     {
-       $teacher = Teachers::findOrFail($id);
+       $teacher = Teacher::findOrFail($id);
        return view('teachers.teacher-edit',compact('teacher'));
 
     }
@@ -49,18 +49,18 @@ class TeacherController extends Controller
             'phone'=>['required','string','max:255'],
         ]);
         
-         Teachers::findOrFail($TeacherId)->update([
+        Teacher::findOrFail($TeacherId)->update([
            'name'=>$request->name,
            'email'=>$request->email,
            'phone'=>$request->phone, 
         ]);
-        return redirect()->route('admin.teachers');
+        return redirect()->route('admin.teachers')->with('success','Teacher updated Successfully');
     }
     public function delete($id)
     {
-        $TeacherId = Teachers::findOrFail($id);
+        $TeacherId = Teacher::findOrFail($id);
         $TeacherId->delete();
-        return redirect()->route('admin.teachers');
+        return redirect()->route('admin.teachers')->with('warning','Teacher Deleted Successfully');
 
     }
 

@@ -13,14 +13,17 @@
 
 		<main class="o-page__content">
             @include('admin.partials.header-arabic')
-			
+
+
             @yield('content')
-			
+
 		</main>
-	</div>
+		
+		
 
 	<!-- Main JavaScript -->
 	<script src="{{asset('admin-arabic')}}/js/neat.js"></script>
+	
 </body>
 
 </html>

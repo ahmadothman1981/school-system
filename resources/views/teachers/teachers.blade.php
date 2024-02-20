@@ -21,6 +21,7 @@
 						<a href="{{route('admin.teacher-create')}}" class="c-btn c-btn--info has-icon">إضافة مدرس   </a>
 					</div>
 				</div>
+				@include('admin.partials.flash-message')
 				<div class="row">
 					<div class="col-12">
 						<div class="c-table-responsive@wide">

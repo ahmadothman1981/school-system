@@ -4,36 +4,49 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Classes;
+use App\Models\ClassName;
+use Illuminate\Support\Facades\Log;
 
 class ClassesController extends Controller
 {
-    public function AllClasses()
+    public function index()
     {
-        $classes = Classes::all();
-
+        $classes = ClassName::paginate(3);
+        
         return view('admin.classes',compact('classes'));
     }
+
     public function create()
     {
         return view('classes.class_create');
     }
+
     public function store(Request $request)
     {
         $request->validate([
             'name'=>['required','string','max:255'],
         ]);
-
-        $class= Classes::create([
+        try{
+        $class= ClassName::create([
             'name'=>$request->name,
         ]);
+        
 
-        return redirect()->route('admin.classes');
+        Log::info(message:"Store Class : System  store Class with id {$class->id} successfully.");
+     }
+        catch(\Throwable $exception){
+    
+        Log::error(message:" can't Store Class : System can't  store Class ".$exception->getMessage());
+        abort(500);
+
+     }
+     
+        return redirect()->route('admin.classes')->with('success','Class created successfully!');
 
     }
     public function edit($id)
     {
-        $class = Classes::findOrFail($id);
+        $class = ClassName::findOrFail($id);
         return  view('classes.edit_class',compact('class'));
     }
     public function update(Request $request)
@@ -43,16 +56,18 @@ class ClassesController extends Controller
             'name'=>['required','string','max:255'],
         ]);
         
-        Classes::findOrFail($ClassId)->update([
+        ClassName::findOrFail($ClassId)->update([
             'name'=>$request->name,
         ]);
-        return redirect()->route('admin.classes');
+        
+        return redirect()->route('admin.classes')->with('success','Class updated Successfully');
     }
     public function delete($id)
     {
-        $ClassId = Classes::findOrFail($id);
+        $ClassId = ClassName::findOrFail($id);
         $ClassId->delete();
-        return redirect()->route('admin.classes');
+       
+        return redirect()->route('admin.classes')->with('warning','Class Deleted Successfully');
 
     }
 }

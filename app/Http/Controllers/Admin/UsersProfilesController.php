@@ -42,7 +42,7 @@ class UsersProfilesController extends Controller
         ]);
         $users = User::all();
 
-        return view("admin.students",compact('users'));
+        return view("admin.students",compact('users'))->with('success','Student Created Successfully');
     }
     
 

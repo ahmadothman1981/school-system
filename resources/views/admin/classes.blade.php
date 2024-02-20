@@ -3,7 +3,7 @@
 <html lang="en">
 
 @include('admin.partials.head-arabic')
-@section('header','الفصل الدراسى ')
+@section('header',' الفصول الدراسية ')
 
 <body>
 
@@ -21,6 +21,8 @@
 						<a href="{{route('admin.create-class')}}" class="c-btn c-btn--info has-icon">إضافة فصل دراسى  </a>
 					</div>
 				</div>
+				@include('admin.partials.flash-message')
+
 				<div class="row">
 					<div class="col-12">
 						<div class="c-table-responsive@wide">
@@ -63,7 +65,7 @@
 						</div>
 					</div>
 				</div>
-
+				{{$classes->links()}}
 				<div class="row">
 					<div class="col-12">
             @include('admin.partials.footer-arabic')
