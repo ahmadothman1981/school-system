@@ -18,20 +18,30 @@
                 <div class="c-alert c-alert--info u-mb-medium">
 
                     <div class="c-alert__content">
-                        <form method="POST" action="{{route('admin.store-student')}}">
+                        <form method="POST" action="{{route('admin.store-student')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="c-field col-md-6">
                                     <label class="title">اسم الطالب كاملا</label>
                                     <input type="text" name="name" class="c-input u-mb-small" placeholder="اسم الطالب كاملا" id="title">
+                                @if($errors->has('name'))
+                                    <div class="alert alert-danger">{{ $errors->first('name') }}</div>
+                                @endif
                                 </div>
                                 <div class="c-field col-md-6">
                                     <label class="title">البريد الالكترونى</label>
                                     <input type="email" name="email" class="c-input u-mb-small" placeholder="البريد الالكترونى" id="title">
+                                    @if($errors->has('email'))
+                                          <div class="alert alert-danger">{{ $errors->first('email') }}</div>
+                                    @endif
+
                                 </div>
                                 <div class="c-field col-md-6">
                                     <label class="title">الهاتف المحمول</label>
                                     <input type="tel" name="phone" class="c-input u-mb-small" placeholder="الهاتف المحمول" id="title">
+                                    @if($errors->has('phone'))
+                                    <div class="alert alert-danger">{{ $errors->first('phone') }}</div>
+                                     @endif
                                 </div>
                                 <div class="c-field col-md-6">
                                     <label class="title">العنوان </label>
@@ -61,7 +71,7 @@
 
                             <div class="c-field">
                                 <label class="Image">الصورة</label>
-                                <input type="file" name="Image" class="c-input u-mb-small" placeholder="الصوره" id="Image">
+                                <input type="file" name="image" class="c-input u-mb-small" placeholder="الصوره" id="Image">
                             </div>
                             
 

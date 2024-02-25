@@ -45,22 +45,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
 
 ///////////////////ADMIN DASHBOARD ////////////////////
 Route::prefix('details')->name('admin.')->group(function(){
-    Route::get('/students-profiles',[UsersProfilesController::class,'show'])->name('users-profiles');
-    Route::get('/create-student',[UsersProfilesController::class,'create'])->name('student-create');
-    Route::post('/store-student',[UsersProfilesController::class,'store'])->name('store-student');
+    Route::controller(UsersProfilesController::class)->prefix('students')->group(function(){
+        Route::get('/','index')->name('profiles');
+        Route::get('/create','create')->name('student-create');
+        Route::post('/store','store')->name('store-student');
 
+    });
+    
 //CLASSES ALL CRUD 
 Route::controller(ClassesController::class)->prefix('classes')->group(function(){
     Route::get('/','index')->name('classes');
@@ -75,13 +69,16 @@ Route::controller(ClassesController::class)->prefix('classes')->group(function()
 
 
 //Teacher ALL CRUD
-    Route::get('/teachers',[TeacherController::class,'allTeachers'])->name('teachers');
-    Route::get('/teacher-create',[TeacherController::class,'create'])->name('teacher-create');
-    Route::post('/store-teacher',[TeacherController::class,'store'])->name('store-teacher');
-    Route::get('/edit-teacher/{id}',[TeacherController::class,'edit'])->name('edit-teacher');
-    Route::post('/update-teacher',[TeacherController::class,'update'])->name('update-teacher');
-    Route::get('/delete-teacher/{id}',[TeacherController::class,'delete'])->name('delete-teacher');
+ Route::controller(TeacherController::class)->prefix('teachers')->group(function(){
+     Route::get('/','index')->name('teachers');
+    Route::view('/create','teachers.teacher_create')->name('teacher-create');
+    Route::post('/store','store')->name('store-teacher');
+    Route::get('/{id}/edit','edit')->name('edit-teacher');
+    Route::post('/update','update')->name('update-teacher');
+    Route::get('/delete/{id}','delete')->name('delete-teacher');
   
+ });   
+   
   
 
     

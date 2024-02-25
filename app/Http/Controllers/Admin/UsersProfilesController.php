@@ -3,35 +3,39 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreStudentRequest;
 use App\Models\User;
-use App\Models\Classes;
+use App\Models\ClassName;
 use Illuminate\Support\Facades\Hash;
 
 
 class UsersProfilesController extends Controller
 {
-    public function show()
+    public function index()
     {
 
-        $users = User::all();
+        $users = User::paginate(3);
 
          return view("admin.students",compact('users'));
     }
     public function create()
     {       
-        $classes = Classes::all();
+        $classes = ClassName::all();
         return view('students.create_student',compact('classes'));
     }
-    public function store(Request $request)
+    public function store(StoreStudentRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'phone' => ['required', 'numeric' ],
-            'address' => ['required', 'string', 'max:255'],
-            'date_of_birth'=>['required','date'],
-        ]);
+
+        
+        
+        $image = $request->file('image');
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        $image-> move(public_path('public/images/students'), $name_gen);
+       $new_image = 'images/students'.$name_gen;
+       // dd($new_image);
+
+       
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -39,10 +43,9 @@ class UsersProfilesController extends Controller
             'password' => Hash::make('password'),
             'address'=>$request->address,
             'date_of_birth'=>$request->date_of_birth,
+            'photo'=>$new_image,
         ]);
-        $users = User::all();
-
-        return view("admin.students",compact('users'))->with('success','Student Created Successfully');
+        return redirect()->route('admin.profiles')->with('success','Student Created Successfully');
     }
     
 

@@ -84,6 +84,7 @@
 						</div>
 					</div>
 				</div>
+				{{$teachers->links()}}
 
 				<div class="row">
 					<div class="col-12">

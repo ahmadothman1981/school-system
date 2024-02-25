@@ -102,7 +102,7 @@
 						</div>
 					</div>
 				</div>
-
+				{{$users->links()}}
 				<div class="row">
 					<div class="col-12">
             @include('admin.partials.footer-arabic')

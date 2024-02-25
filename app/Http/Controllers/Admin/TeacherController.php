@@ -7,15 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\Teacher;
 class TeacherController extends Controller
 {
-    public function allTeachers()
+    public function index()
     {
-        $teachers = Teacher::all();
+        $teachers = Teacher::paginate(3);
         return view('teachers.teachers',compact('teachers'));
     }
-    public function create()
-    {
-        return view('teachers.teacher_create');
-    }
+    
     public function store(Request $request)
     {
       
@@ -30,9 +27,8 @@ class TeacherController extends Controller
            'email'=>$request->email,
            'phone'=>$request->phone, 
         ]);
-        $teachers = Teacher::all();
 
-        return view('teachers.teachers',compact('teachers'))->with('success','Teacher Created Successfully');
+        return redirect()->route('admin.teachers')->with('success','Teacher Created Successfully');
     }
     public function edit($id)
     {

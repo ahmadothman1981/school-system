@@ -39,7 +39,7 @@
             </li>
             
             <li>
-                <a class="c-sidebar__link " href="{{route('admin.users-profiles')}}">
+                <a class="c-sidebar__link " href="{{route('admin.profiles')}}">
                     <i class="c-sidebar__icon feather icon-users"></i>الطلاب
                 </a>
             </li>
