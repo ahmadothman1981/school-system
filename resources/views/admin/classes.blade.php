@@ -39,7 +39,7 @@
 								<tbody>
 									@foreach ($classes as $class)
 									<tr class="c-table__row">
-										<td class="c-table__cell">1</td>
+										<td class="c-table__cell">{{ $loop->iteration }}</td>
 										<td class="c-table__cell">
 											<div class="o-media">
 												<div class="o-media__body">

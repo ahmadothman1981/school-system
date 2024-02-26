@@ -27,7 +27,7 @@ class UsersProfilesController extends Controller
     public function store(StoreStudentRequest $request)
     {
 
-        
+       
 
            $image = $request->file('image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
@@ -35,7 +35,7 @@ class UsersProfilesController extends Controller
             $new_image = 'images/students/'.$name_gen;
         
        
-       // dd($new_image);
+       
 
        
 
@@ -70,6 +70,8 @@ class UsersProfilesController extends Controller
             unlink(public_path('/').$user->photo); 
             $image_name = date('YmdHi').$update_image->getClientOriginalExtension();
             $update_image->move(public_path('/images/students'), $image_name);
+        }else{
+            $update_image= $user->photo ;
         }
         User::FindOrFail($UserId)->update([
             'name' => $request->name,
