@@ -52,6 +52,9 @@ Route::prefix('details')->name('admin.')->group(function(){
         Route::get('/','index')->name('profiles');
         Route::get('/create','create')->name('student-create');
         Route::post('/store','store')->name('store-student');
+        Route::get('/{id}/edit','edit')->name('edit-student');
+        Route::post('/update','update')->name('update-student');
+        Route::get('/delete/{id}','delete')->name('delete-student');
 
     });
     

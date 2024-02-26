@@ -3,8 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\User;
-class StoreStudentRequest extends FormRequest
+
+class UpdateStudentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,7 @@ class StoreStudentRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
             'phone' => ['required', 'numeric' ],
             'address' => ['required', 'string', 'max:255'],
             'date_of_birth'=>['required','date'],
@@ -32,6 +32,7 @@ class StoreStudentRequest extends FormRequest
            
         ];
     }
+
     public function messages()
     {
         return [
@@ -48,4 +49,5 @@ class StoreStudentRequest extends FormRequest
 
         ];
     }
+
 }

@@ -87,10 +87,10 @@
 										</td>
 										
 										<td class="c-table__cell">
-											<a href="pages-edit.html" class="c-btn c-btn--success has-icon">
+											<a href="{{route('admin.edit-student',$user->id)}}" class="c-btn c-btn--success has-icon">
 												تعديل <i class="feather icon-wranch"></i>
 											</a>
-											<a href="#" class="c-btn c-btn--danger has-icon">
+											<a href="{{route('admin.delete-student',$user->id)}}" class="c-btn c-btn--danger has-icon">
 												حذف <i class="feather icon-wranch"></i>
 											</a>
 										</td>
