@@ -22,7 +22,11 @@
                             @csrf
                             <div class="c-field col-md-6">
                                 <label class="title"> المرحلة الدراسية</label>
+                                
                                 <input type="text" name="name" class="c-input u-mb-medium" placeholder="المرحلة الدراسية  " id="title">
+                                @if($errors->has('name'))
+                                <span class="text-danger">*{{ $errors->first('name') }}</span>
+                                 @endif
                             </div>
                             <button class="c-btn  c-btn--info">إضافة </button>
                         </form>
@@ -45,4 +49,4 @@
 	</div>
 
 	<!-- Main JavaScript -->
-	<script src="js/neat.js"></script>
+	<script src="{{asset('admin-arabic/js/neat.js')}}"></script>

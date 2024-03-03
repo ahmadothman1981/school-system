@@ -10,14 +10,14 @@ use App\Models\ClassName;
 use Illuminate\Support\Facades\Hash;
 
 
-class UsersProfilesController extends Controller
+class StudentController extends Controller
 {
     public function index()
     {
 
         $users = User::paginate(3);
 
-         return view("admin.students",compact('users'));
+         return view("students.students",compact('users'));
     }
     public function create()
     {       
@@ -27,29 +27,31 @@ class UsersProfilesController extends Controller
     public function store(StoreStudentRequest $request)
     {
 
-       
+       try{ $image = $request->file('image');
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        $image-> move(public_path('/images/students'), $name_gen);
+        $new_image = 'images/students/'.$name_gen;
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'phone'=>$request->phone,
+        'password' => Hash::make('password'),
+        'address'=>$request->address,
+        'date_of_birth'=>$request->date_of_birth,
+        'notes'=>$request->notes,
+        'photo'=>$new_image,
+        'class'=>$request->class,
+    ]);
+    Log::info(message:"Store Student : System  store Student with id {$user->id} successfully.");
+    }
+    catch(\Throwable $exception){
+    
+        Log::error(message:" can't Store Student : System can't  store Student ".$exception->getMessage());
+        abort(500);
 
-           $image = $request->file('image');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            $image-> move(public_path('/images/students'), $name_gen);
-            $new_image = 'images/students/'.$name_gen;
-        
-       
-       
+     }
 
-       
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone'=>$request->phone,
-            'password' => Hash::make('password'),
-            'address'=>$request->address,
-            'date_of_birth'=>$request->date_of_birth,
-            'notes'=>$request->notes,
-            'photo'=>$new_image,
-            'class'=>$request->class,
-        ]);
+          
         return redirect()->route('admin.profiles')->with('success','Student Created Successfully');
     }
 
@@ -62,7 +64,8 @@ class UsersProfilesController extends Controller
 
     public function update(UpdateStudentRequest $request)
     {
-        $UserId = $request->id;
+        try{
+            $UserId = $request->id;
         $user = User::find($UserId);
         if($request->file('image'))
         {
@@ -84,6 +87,16 @@ class UsersProfilesController extends Controller
             'photo'=>$update_image,
             'class'=>$request->class,
         ]);
+        Log::info(message:"Update Student : System  Update Student with id {$user->id} successfully.");
+    }
+    catch(\Throwable $exception){
+    
+        Log::error(message:" can't Update Student : System can't  Update Student ".$exception->getMessage());
+        abort(500);
+
+     }
+
+        
 
         return redirect()->route('admin.profiles')->with('success','Student Updated Successfully');
         
@@ -91,7 +104,8 @@ class UsersProfilesController extends Controller
 
     public function delete($id)
     {
-        $user = User::findOrFail($id);
+        try{
+            $user = User::findOrFail($id);
         $UserImage = $user->photo;
         
         if(!$UserImage == null)
@@ -101,6 +115,17 @@ class UsersProfilesController extends Controller
         }
         
         $user->delete();
+        Log::info(message:"Delete Student : System  Delete Student  successfully.");
+        }
+        
+
+        catch(\Throwable $exception){
+    
+            Log::error(message:" can't Delete Student : System can't  Delete Student ".$exception->getMessage());
+            abort(500);
+    
+         }
+    
 
         return redirect()->route('admin.profiles')->with('warning','Student Deleted Successfully');
     }

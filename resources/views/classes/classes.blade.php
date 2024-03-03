@@ -18,7 +18,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						<a href="{{route('admin.create-class')}}" class="c-btn c-btn--info has-icon">إضافة فصل دراسى  </a>
+						<a href="{{route('admin.create-class')}}" class="c-btn c-btn--info has-icon float-right">إضافة فصل دراسى  </a>
 					</div>
 				</div>
 				@include('admin.partials.flash-message')
@@ -53,8 +53,8 @@
 											<a href="{{route('admin.edit-class',$class->id)}}" class="c-btn c-btn--success has-icon">
 												تعديل <i class="feather icon-wranch"></i>
 											</a>
-											<a href="{{route('admin.delete-class',$class->id)}}" class="c-btn c-btn--danger has-icon">
-												حذف <i class="feather icon-wranch"></i>
+											<a href="{{route('admin.delete-class',$class->id)}}" id="delete"  class="c-btn c-btn--danger has-icon">
+												حذف <i class="feather icon-wranch" ></i>
 											</a>
 										</td>
 									</tr>	
@@ -76,7 +76,9 @@
 	</div>
 
 	<!-- Main JavaScript -->
-	<script src="js/neat.js"></script>
+	<script src="{{asset('admin-arabic/js/neat.js')}}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="{{asset('admin-arabic/js/alert.js')}}"></script>
 </body>
 
 </html>

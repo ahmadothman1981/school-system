@@ -24,14 +24,23 @@
                                 <div class="c-field col-md-6">
                                     <label class="title">اسم المدرس كاملا</label>
                                     <input type="text" name="name" class="c-input u-mb-small" placeholder="اسم الطالب كاملا" id="title">
+                                    @if($errors->has('name'))
+                                    <span class="text-danger">*{{ $errors->first('name') }}</span>
+                                     @endif
                                 </div>
                                 <div class="c-field col-md-6">
                                     <label class="title">البريد الالكترونى</label>
                                     <input type="email" name="email" class="c-input u-mb-small" placeholder="البريد الالكترونى" id="title">
+                                    @if($errors->has('email'))
+                                    <span class="text-danger">*{{ $errors->first('email') }}</span>
+                                     @endif
                                 </div>
                                 <div class="c-field col-md-6">
                                     <label class="title">الهاتف المحمول</label>
                                     <input type="tel" name="phone" class="c-input u-mb-small" placeholder="الهاتف المحمول" id="title">
+                                    @if($errors->has('phone'))
+                                    <span class="text-danger">*{{ $errors->first('phone') }}</span>
+                                     @endif
                                 </div>
                             <button class="c-btn c-btn--fullwidth c-btn--info">حفظ </button>
                         </form>
@@ -54,4 +63,4 @@
 	</div>
 
 	<!-- Main JavaScript -->
-	<script src="js/neat.js"></script>
+	<script src="{{asset('admin-arabic/js/neat.js')}}"></script>

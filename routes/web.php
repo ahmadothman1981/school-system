@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FrontHomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminHomeController;
-use App\Http\Controllers\Admin\UsersProfilesController;
+use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\ClassesController;
 use App\Http\Controllers\Admin\TeacherController;
 
@@ -48,7 +48,7 @@ Route::get('/', function () {
 
 ///////////////////ADMIN DASHBOARD ////////////////////
 Route::prefix('details')->name('admin.')->group(function(){
-    Route::controller(UsersProfilesController::class)->prefix('students')->group(function(){
+    Route::controller(StudentController::class)->prefix('students')->group(function(){
         Route::get('/','index')->name('profiles');
         Route::get('/create','create')->name('student-create');
         Route::post('/store','store')->name('store-student');

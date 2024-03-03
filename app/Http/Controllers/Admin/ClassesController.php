@@ -13,7 +13,7 @@ class ClassesController extends Controller
     {
         $classes = ClassName::paginate(3);
         
-        return view('admin.classes',compact('classes'));
+        return view('classes.classes',compact('classes'));
     }
 
     public function create()
@@ -25,6 +25,9 @@ class ClassesController extends Controller
     {
         $request->validate([
             'name'=>['required','string','max:255'],
+        ],[
+            'name.required' => 'من فضلك ادخل اسم الفصل الدراسى',
+            
         ]);
         try{
         $class= ClassName::create([
@@ -41,7 +44,7 @@ class ClassesController extends Controller
 
      }
      
-        return redirect()->route('admin.classes')->with('success','Class created successfully!');
+        return redirect()->route('admin.classes')->with('success','تم إنشاء الفصل الدراسى');
 
     }
     public function edit($id)
@@ -51,10 +54,23 @@ class ClassesController extends Controller
     }
     public function update(Request $request)
     {
-        $ClassId = $request->id;
-        $request->validate([
-            'name'=>['required','string','max:255'],
-        ]);
+        try{
+            $ClassId = $request->id;
+            $request->validate([
+                'name'=>['required','string','max:255'],
+            ],[
+                'name.required' => 'من فضلك ادخل اسم الفصل الدراسى',
+                
+            ]);
+            Log::info(message:"Update Class : System  Update Class with id {$ClassId} successfully.");
+        }
+        catch(\Throwable $exception){
+    
+            Log::error(message:" can't Update Class : System can't  Update Class ".$exception->getMessage());
+            abort(500);
+    
+         }
+       
         
         ClassName::findOrFail($ClassId)->update([
             'name'=>$request->name,
@@ -64,10 +80,20 @@ class ClassesController extends Controller
     }
     public function delete($id)
     {
-        $ClassId = ClassName::findOrFail($id);
-        $ClassId->delete();
+        try{
+            $ClassId = ClassName::findOrFail($id);
+            $ClassId->delete();
+            Log::info(message:"Delete Class : System  Delete Class  successfully.");
+        }
+        catch(\Throwable $exception){
+    
+            Log::error(message:" can't Delete Class : System can't  Delete Class ".$exception->getMessage());
+            abort(500);
+    
+         }
+        
        
-        return redirect()->route('admin.classes')->with('warning','Class Deleted Successfully');
+        return redirect()->route('admin.classes')->with('warning','تم حذف الفصل الدراسى');
 
     }
 }

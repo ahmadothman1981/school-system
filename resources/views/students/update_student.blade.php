@@ -107,4 +107,4 @@
 	</div>
 
 	<!-- Main JavaScript -->
-	<script src="js/neat.js"></script>
+	<script src="{{asset('admin-arabic/js/neat.js')}}"></script>

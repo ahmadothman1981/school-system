@@ -35,15 +35,15 @@ class StoreStudentRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'The name field is required.',
-            'name.max' => 'The name field must not exceed 255 characters.',
-            'email.required' => 'The email field is required.',
-            'email.email' => 'Please enter a valid email address.',
-            'email.unique' => 'The email address is already in use.',
-            'phone.required' => 'The phone field is required.',
-            'phone.numeric' => 'Please enter a valid phone number.',
-            'date_of_birth.required'=>'please enter birth day student',
-            'image.extensions' => 'The file must be image file png jpg jpeg .',
+            'name.required' => 'الإسم مطلوب',
+            'name.max' => 'الاسم يجب ان يكون اقل من 255 حرف.',
+            'email.required' => 'الإيميل مطلوب.',
+            'email.email' => 'من فضلك ادخل ايميل صحيح',
+            'email.unique' => 'الايميل مستخدم من قبل',
+            'phone.required' => ' رقم التليفون مطلوب .',
+            'phone.numeric' => 'منفضلك ادخل رقم تليفون صحيح.',
+            'date_of_birth.required'=>'تاريخ الميلاد مطلوب',
+            'image.extensions' => 'الصورة يجب ان تكون بامتداد png jpg jpeg .',
 
 
         ];

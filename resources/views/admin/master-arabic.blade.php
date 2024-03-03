@@ -22,8 +22,12 @@
 		
 
 	<!-- Main JavaScript -->
-	<script src="{{asset('admin-arabic')}}/js/neat.js"></script>
-	
+	<script src="{{asset('admin-arabic/js/neat.js')}}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="{{asset('admin-arabic/js/alert.js')}}"></script>
+
+		
+	</script>
 </body>
 
 </html>

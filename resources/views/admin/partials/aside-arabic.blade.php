@@ -1,6 +1,6 @@
 <aside class="c-sidebar">
     <div class="c-sidebar__brand">
-        <a href="#"><img src="{{asset('admin-arabic')}}/images/logo-h.png" alt="Neat"></a>
+        <a href="#"><img src="{{asset('admin-arabic/images/logo-color.png')}}" alt="Neat"></a>
     </div>
 
     <!-- Scrollable -->

@@ -18,7 +18,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						<a href="{{route('admin.teacher-create')}}" class="c-btn c-btn--info has-icon">إضافة مدرس   </a>
+						<a href="{{route('admin.teacher-create')}}" class="c-btn c-btn--info has-icon float-right">إضافة مدرس   </a>
 					</div>
 				</div>
 				@include('admin.partials.flash-message')
@@ -72,7 +72,7 @@
 											<a href="{{route('admin.edit-teacher',$teacher->id)}}" class="c-btn c-btn--success has-icon">
 												تعديل <i class="feather icon-wranch"></i>
 											</a>
-											<a href="{{route('admin.delete-teacher',$teacher->id)}}" class="c-btn c-btn--danger has-icon">
+											<a href="{{route('admin.delete-teacher',$teacher->id)}}" id="delete" class="c-btn c-btn--danger has-icon">
 												حذف <i class="feather icon-wranch"></i>
 											</a>
 										</td>
@@ -96,7 +96,9 @@
 	</div>
 
 	<!-- Main JavaScript -->
-	<script src="js/neat.js"></script>
+	<script src="{{asset('admin-arabic/js/neat.js')}}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="{{asset('admin-arabic/js/alert.js')}}"></script>
 </body>
 
 </html>

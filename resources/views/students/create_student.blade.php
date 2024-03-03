@@ -25,14 +25,14 @@
                                     <label class="title">اسم الطالب كاملا</label>
                                     <input type="text" name="name" class="c-input u-mb-small" placeholder="اسم الطالب كاملا" id="title">
                                 @if($errors->has('name'))
-                                    <div class="alert alert-danger">{{ $errors->first('name') }}</div>
+                                    <span class="text-danger">*{{ $errors->first('name') }}</span>
                                 @endif
                                 </div>
                                 <div class="c-field col-md-6">
                                     <label class="title">البريد الالكترونى</label>
                                     <input type="email" name="email" class="c-input u-mb-small" placeholder="البريد الالكترونى" id="title">
                                     @if($errors->has('email'))
-                                          <div class="alert alert-danger">{{ $errors->first('email') }}</div>
+                                          <span class="text-danger">*{{ $errors->first('email') }}</span>
                                     @endif
 
                                 </div>
@@ -40,7 +40,7 @@
                                     <label class="title">الهاتف المحمول</label>
                                     <input type="tel" name="phone" class="c-input u-mb-small" placeholder="الهاتف المحمول" id="title">
                                     @if($errors->has('phone'))
-                                    <div class="alert alert-danger">{{ $errors->first('phone') }}</div>
+                                    <span class="text-danger">{{ $errors->first('phone') }}</span>
                                      @endif
                                 </div>
                                 <div class="c-field col-md-6">
@@ -52,7 +52,7 @@
                                     <label class="title"> تاريخ الميلاد</label>
                                     <input type="date" name="date_of_birth" class="c-input u-mb-small" placeholder="تاريخ الميلاد" id="title">
                                     @if($errors->has('date_of_birth'))
-                                    <div class="alert alert-danger">{{ $errors->first('date_of_birth') }}</div>
+                                    <span class="text-danger">*{{ $errors->first('date_of_birth') }}</span>
                                 @endif
                                 </div>
                                 <div class="c-field col-md-6">
@@ -73,10 +73,11 @@
                             </div>
 
                             <div class="c-field">
-                                <label class="Image">الصورة</label>
                                 @if($errors->has('image'))
-                                <div class="alert alert-danger">{{ $errors->first('image') }}</div>
+                                <span class="text-danger">*{{ $errors->first('image') }}</span>
                                  @endif
+                                <label class="Image">الصورة</label>
+                                
                                 <input type="file" name="image" class="c-input u-mb-small" placeholder="الصوره" id="Image">
                                
                             </div>
@@ -103,4 +104,4 @@
 	</div>
 
 	<!-- Main JavaScript -->
-	<script src="js/neat.js"></script>
+	<script src="{{asset('admin-arabic/js/neat.js')}}"></script>
