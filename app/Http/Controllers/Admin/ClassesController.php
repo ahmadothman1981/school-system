@@ -11,7 +11,7 @@ class ClassesController extends Controller
 {
     public function index()
     {
-        $classes = ClassName::paginate(3);
+        $classes = ClassName::paginate(6);
         
         return view('classes.classes',compact('classes'));
     }

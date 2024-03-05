@@ -23,8 +23,8 @@
                 </a>
             </li>
             <li>
-                <a class="c-sidebar__link " href="tags.html">
-                    <i class="c-sidebar__icon feather icon-file-text"></i> الوسوم
+                <a class="c-sidebar__link " href="{{route('admin.subjects')}}">
+                    <i class="c-sidebar__icon feather icon-file-text"></i> المواد الدراسية
                 </a>
             </li>
             <li>

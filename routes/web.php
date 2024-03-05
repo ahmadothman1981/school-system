@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\ClassesController;
 use App\Http\Controllers\Admin\TeacherController;
+use App\Http\Controllers\Admin\SubjectController;
+
 
 
 /*
@@ -80,8 +82,18 @@ Route::controller(ClassesController::class)->prefix('classes')->group(function()
     Route::post('/update','update')->name('update-teacher');
     Route::get('/delete/{id}','delete')->name('delete-teacher');
   
- });   
-   
+ }); 
+ 
+ //Subject All Crud
+ Route::controller(SubjectController::class)->prefix('subjects')->group(function(){
+    Route::get('/','index')->name('subjects');  
+   Route::view('/create','subjects.create-subject')->name('subject-create');
+   Route::post('/store','store')->name('store-subject');
+   Route::get('/{id}/edit','edit')->name('edit-subject');
+   Route::post('/update','update')->name('update-subject');
+   Route::get('/delete/{id}','delete')->name('delete-subject');
+ 
+});   
   
 
     

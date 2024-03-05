@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateStudentRequest;
 use App\Models\User;
 use App\Models\ClassName;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 
 class StudentController extends Controller
