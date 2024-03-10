@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\User;
-use App\Models\ClassName;
+use App\Models\Semester;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
@@ -22,7 +22,7 @@ class StudentController extends Controller
     }
     public function create()
     {       
-        $classes = ClassName::all();
+        $classes = Semester::all();
         return view('students.create_student',compact('classes'));
     }
     public function store(StoreStudentRequest $request)
@@ -45,7 +45,7 @@ class StudentController extends Controller
     ]);
     //piovet table attach
        $class_id = $user->class;
-       $user->subjects()->attach($class_id);
+       $user->semesters()->attach($class_id);
     Log::info(message:"Store Student : System  store Student with id {$user->id} successfully.");
     }
     catch(\Throwable $exception){
@@ -62,7 +62,7 @@ class StudentController extends Controller
     public function edit($id)
     {
         $student = User::findOrFail($id);
-        $classes = ClassName::all();
+        $classes = Semester::all();
         return view('students.update_student',compact('student','classes'));
     }
 

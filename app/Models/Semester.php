@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
 
-class Division extends Model
+class Semester extends Model
 {
     use HasFactory;
 
@@ -15,5 +15,8 @@ class Division extends Model
         'name',
     ];
 
-   
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\EmailResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Division;
+use App\Models\Semester;
 
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -57,5 +57,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 
-    
+    public function semesters()
+    {
+        return $this->belongsToMany(Semester::class);
+    }
 }
