@@ -28,6 +28,16 @@
                                 <span class="text-danger">*{{ $errors->first('name') }}</span>
                                  @endif
                             </div>
+                            <div class="c-field col-md-6">
+                                <label class="status"> مدرس المادة</label>
+                                
+                                <select name="teacher_id" id="" class="c-input u-mb-small">
+                                    @foreach($teachers as $teacher)
+                                    <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+                                    @endforeach
+                                </select>
+                                
+                            </div>
                             <button class="c-btn  c-btn--info">إضافة </button>
                         </form>
 

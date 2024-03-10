@@ -87,7 +87,7 @@ Route::controller(ClassesController::class)->prefix('classes')->group(function()
  //Subject All Crud
  Route::controller(SubjectController::class)->prefix('subjects')->group(function(){
     Route::get('/','index')->name('subjects');  
-   Route::view('/create','subjects.create-subject')->name('subject-create');
+   Route::get('/create','create')->name('subject-create');
    Route::post('/store','store')->name('store-subject');
    Route::get('/{id}/edit','edit')->name('edit-subject');
    Route::post('/update','update')->name('update-subject');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Subject;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\Log;
 
 class SubjectController extends Controller
@@ -17,22 +18,30 @@ class SubjectController extends Controller
 
     public function create()
     {
-        return view('subjects.create-subjct');
+        $teachers =Teacher::all();
+        
+        return view('subjects.create-subject',compact('teachers'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'name'=>['required','string','max:255'],
+            'teacher_id'=>['required','string'],
         ],[
             'name.required' => 'من فضلك ادخل اسم المادة الدراسية',
+            'teacher_id.required' => 'من فضلك ادخل مدرس المادة الدراسية',
+
             
         ]);
         try{
         $subject= Subject::create([
             'name'=>$request->name,
+            'teacher_id'=>$request->teacher_id,
         ]);
-        
+        //piovet table attach
+       $teacher_id = $subject->teacher_id;
+       $subject->teachers()->attach($teacher_id);
 
         Log::info(message:"Store Subject : System  store Subject with id {$subject->id} successfully.");
      }
@@ -59,8 +68,10 @@ class SubjectController extends Controller
             $SubjectId = $request->id;
             $request->validate([
                 'name'=>['required','string','max:255'],
-            ],[
-                'name.required' => 'من فضلك ادخل اسم المادة الدراسيةSubject',
+                'teacher_id'=>['required','string'],
+            ],[    
+            'name.required' => 'من فضلك ادخل اسم المادة الدراسية',
+            'teacher_id.required' => 'من فضلك ادخل مدرس المادة الدراسية',
                 
             ]);
             Log::info(message:"Update Subject : System  Update Subject with id {$SubjectId} successfully.");
@@ -75,6 +86,7 @@ class SubjectController extends Controller
         
         Subject::findOrFail($SubjectId)->update([
             'name'=>$request->name,
+            'teacher_id'=>$request->teacher_id,
         ]);
         
         return redirect()->route('admin.subjects')->with('success','Subject updated Successfully');
