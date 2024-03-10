@@ -77,7 +77,7 @@ class SubjectController extends Controller
             'name'=>$request->name,
         ]);
         
-        return redirect()->route('admin.subjects')->with('success','Class updated Successfully');
+        return redirect()->route('admin.subjects')->with('success','Subject updated Successfully');
     }
 
     public function delete($id)

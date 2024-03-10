@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ClassName;
+use App\Models\Division;
 use Illuminate\Support\Facades\Log;
 
 class ClassesController extends Controller
 {
     public function index()
     {
-        $classes = ClassName::paginate(6);
+        $classes = Division::paginate(6);
         
         return view('classes.classes',compact('classes'));
     }
@@ -30,7 +30,7 @@ class ClassesController extends Controller
             
         ]);
         try{
-        $class= ClassName::create([
+        $class= Division::create([
             'name'=>$request->name,
         ]);
         
@@ -49,7 +49,7 @@ class ClassesController extends Controller
     }
     public function edit($id)
     {
-        $class = ClassName::findOrFail($id);
+        $class = Division::findOrFail($id);
         return  view('classes.edit_class',compact('class'));
     }
     public function update(Request $request)
@@ -72,7 +72,7 @@ class ClassesController extends Controller
          }
        
         
-        ClassName::findOrFail($ClassId)->update([
+        Division::findOrFail($ClassId)->update([
             'name'=>$request->name,
         ]);
         
@@ -81,7 +81,7 @@ class ClassesController extends Controller
     public function delete($id)
     {
         try{
-            $ClassId = ClassName::findOrFail($id);
+            $ClassId = Division::findOrFail($id);
             $ClassId->delete();
             Log::info(message:"Delete Class : System  Delete Class  successfully.");
         }

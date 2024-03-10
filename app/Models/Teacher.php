@@ -13,5 +13,6 @@ class Teacher extends Model
         'name',
         'email',
         'phone',
+        
     ];
 }

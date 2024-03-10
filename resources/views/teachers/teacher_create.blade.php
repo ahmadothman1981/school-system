@@ -42,6 +42,8 @@
                                     <span class="text-danger">*{{ $errors->first('phone') }}</span>
                                      @endif
                                 </div>
+                               
+                            </div>
                             <button class="c-btn c-btn--fullwidth c-btn--info">حفظ </button>
                         </form>
 

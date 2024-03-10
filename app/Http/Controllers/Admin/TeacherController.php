@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
+use App\Models\Subject;
 use Illuminate\Support\Facades\Log;
 
 class TeacherController extends Controller
@@ -15,6 +16,7 @@ class TeacherController extends Controller
         $teachers = Teacher::paginate(3);
         return view('teachers.teachers',compact('teachers'));
     }
+
     
     public function store(Request $request)
     {
@@ -23,10 +25,14 @@ class TeacherController extends Controller
             'name'=>['required','string','max:255'],
             'email'=>['required','email'],
             'phone'=>['required','string','max:255'],
+            
+
         ],[
             'name.required' => 'من فضلك ادخل اسم الفصل الدراسى',
             'email.required' => 'من فضلك ادخل الايميل',
-            'phone.required' => 'من فضلك ادخل رقم التليفون'
+            'phone.required' => 'من فضلك ادخل رقم التليفون',
+            
+
 
 
         ]);
@@ -34,7 +40,8 @@ class TeacherController extends Controller
             $teacher = Teacher::create([
                 'name'=>$request->name,
                 'email'=>$request->email,
-                'phone'=>$request->phone, 
+                'phone'=>$request->phone,
+                 
              ]);
              Log::info(message:"Store Teacher : System  store Teacher with id {$teacher->id} successfully.");
         }
@@ -60,10 +67,13 @@ class TeacherController extends Controller
             'name'=>['required','string','max:255'],
             'email'=>['required','email'],
             'phone'=>['required','string','max:255'],
+            
         ],[
             'name.required' => 'من فضلك ادخل اسم الفصل الدراسى',
             'email.required' => 'من فضلك ادخل الايميل',
-            'phone.required' => 'من فضلك ادخل رقم التليفون'
+            'phone.required' => 'من فضلك ادخل رقم التليفون',
+            
+
 
 
         ]);
@@ -71,7 +81,8 @@ class TeacherController extends Controller
             Teacher::findOrFail($TeacherId)->update([
                 'name'=>$request->name,
                 'email'=>$request->email,
-                'phone'=>$request->phone, 
+                'phone'=>$request->phone,
+                
              ]);
              Log::info(message:"Update Teacher : System  Update Teacher with id {$teacher->id} successfully.");
         }

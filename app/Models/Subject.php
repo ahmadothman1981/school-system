@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Subject extends Model
 {
     use HasFactory;
@@ -12,4 +13,6 @@ class Subject extends Model
     protected $fillable = [
         'name',
     ];
+
+   
 }

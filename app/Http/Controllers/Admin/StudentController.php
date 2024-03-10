@@ -43,6 +43,9 @@ class StudentController extends Controller
         'photo'=>$new_image,
         'class'=>$request->class,
     ]);
+    //piovet table attach
+       $class_id = $user->class;
+       $user->subjects()->attach($class_id);
     Log::info(message:"Store Student : System  store Student with id {$user->id} successfully.");
     }
     catch(\Throwable $exception){
