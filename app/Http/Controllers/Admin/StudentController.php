@@ -46,6 +46,7 @@ class StudentController extends Controller
     //piovet table attach
        $class_id = $user->class;
        $user->semesters()->attach($class_id);
+       $user->subjects()->attach($user->id);
     Log::info(message:"Store Student : System  store Student with id {$user->id} successfully.");
     }
     catch(\Throwable $exception){
@@ -110,7 +111,8 @@ class StudentController extends Controller
     {
         try{
             $user = User::findOrFail($id);
-        $UserImage = $user->photo;
+            $user->semesters()->detach(semester_id);
+            $UserImage = $user->photo;
         
         if(!$UserImage == null)
         {

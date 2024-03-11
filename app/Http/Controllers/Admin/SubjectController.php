@@ -40,8 +40,9 @@ class SubjectController extends Controller
             'teacher_id'=>$request->teacher_id,
         ]);
         //piovet table attach
-       $teacher_id = $subject->teacher_id;
-       $subject->teachers()->attach($teacher_id);
+       $subject->users()->attach();
+       $subject->teachers()->attach($subject->teacher_id);
+
 
         Log::info(message:"Store Subject : System  store Subject with id {$subject->id} successfully.");
      }
