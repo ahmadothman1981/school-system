@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->string('address');
             $table->string('notes')->nullable();
-            $table->string('class')->nullable();
+            $table->string('semester')->nullable();
         });
     }
 

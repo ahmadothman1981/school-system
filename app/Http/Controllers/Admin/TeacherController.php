@@ -84,7 +84,7 @@ class TeacherController extends Controller
                 'phone'=>$request->phone,
                 
              ]);
-             Log::info(message:"Update Teacher : System  Update Teacher with id {$teacher->id} successfully.");
+             Log::info(message:"Update Teacher : System  Update Teacher with id {$TeacherId} successfully.");
         }
         catch(\Throwable $exception){
     

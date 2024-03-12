@@ -26,6 +26,26 @@
                                 <label class="title"> المادة الدراسية</label>
                                 <input type="text" name="name" value="{{$subject->name}}" class="c-input u-mb-medium" placeholder="المادة الدراسية  " id="title">
                             </div>
+                            <div class="c-field col-md-6">
+                                <label class="status"> مدرس المادة</label>
+                                
+                                <select name="teacher_id" id="" class="c-input u-mb-small">
+                                    @foreach($teachers as $teacher)
+                                    <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+                                    @endforeach
+                                </select>
+                                
+                            </div>
+                            <div class="c-field col-md-6">
+                                <label class="status"> الفصل الدراسى</label>
+                                
+                                <select name="semester_id" id="" class="c-input u-mb-small">
+                                    @foreach($semesters as $semester)
+                                    <option value="{{$semester->id}}">{{$semester->name}}</option>
+                                    @endforeach
+                                </select>
+                                
+                            </div>
                             <button class="c-btn  c-btn--info">تعديل </button>
                         </form>
 

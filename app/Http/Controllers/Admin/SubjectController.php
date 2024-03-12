@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Subject;
 use App\Models\Teacher;
+use App\Models\Semester;
 use Illuminate\Support\Facades\Log;
 
 class SubjectController extends Controller
@@ -19,8 +20,8 @@ class SubjectController extends Controller
     public function create()
     {
         $teachers =Teacher::all();
-        
-        return view('subjects.create-subject',compact('teachers'));
+        $semesters = Semester::all();
+        return view('subjects.create-subject',compact('teachers','semesters'));
     }
 
     public function store(Request $request)
@@ -28,9 +29,12 @@ class SubjectController extends Controller
         $request->validate([
             'name'=>['required','string','max:255'],
             'teacher_id'=>['required','string'],
+            'semester_id'=>['required','string'],
+
         ],[
             'name.required' => 'من فضلك ادخل اسم المادة الدراسية',
             'teacher_id.required' => 'من فضلك ادخل مدرس المادة الدراسية',
+            'semester_id.required' => 'من فضلك ادخل مدرس الفصل الدراسي',
 
             
         ]);
@@ -38,10 +42,11 @@ class SubjectController extends Controller
         $subject= Subject::create([
             'name'=>$request->name,
             'teacher_id'=>$request->teacher_id,
+            'semester_id'=>$request->semester_id,
         ]);
         //piovet table attach
-       $subject->users()->attach();
-       $subject->teachers()->attach($subject->teacher_id);
+      
+       
 
 
         Log::info(message:"Store Subject : System  store Subject with id {$subject->id} successfully.");
@@ -60,7 +65,9 @@ class SubjectController extends Controller
     public function edit($id)
     {
         $subject = Subject::findOrFail($id);
-        return view('subjects.update_subject',compact('subject'));
+        $teachers =Teacher::all();
+        $semesters = Semester::all();
+        return view('subjects.update_subject',compact('subject','teachers','semesters'));
     }
 
     public function update(Request $request)
@@ -70,9 +77,12 @@ class SubjectController extends Controller
             $request->validate([
                 'name'=>['required','string','max:255'],
                 'teacher_id'=>['required','string'],
+                'semester_id'=>['required','string'],
+
             ],[    
             'name.required' => 'من فضلك ادخل اسم المادة الدراسية',
             'teacher_id.required' => 'من فضلك ادخل مدرس المادة الدراسية',
+            'semester_id.required' => 'من فضلك ادخل مدرس الفصل الدراسي',
                 
             ]);
             Log::info(message:"Update Subject : System  Update Subject with id {$SubjectId} successfully.");
@@ -88,6 +98,7 @@ class SubjectController extends Controller
         Subject::findOrFail($SubjectId)->update([
             'name'=>$request->name,
             'teacher_id'=>$request->teacher_id,
+            'semester_id'=>$request->semester_id,
         ]);
         
         return redirect()->route('admin.subjects')->with('success','Subject updated Successfully');

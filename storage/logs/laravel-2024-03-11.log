@@ -1,0 +1,6 @@
+[2024-03-11 21:00:26] local.ERROR:  can't Store subject : System can't  store subject Call to undefined method Illuminate\Database\Eloquent\Relations\BelongsTo::attach()  
+[2024-03-11 21:07:11] local.ERROR:  can't Update Subject : System can't  Update Subject من فضلك ادخل مدرس المادة الدراسية  
+[2024-03-11 21:07:18] local.ERROR:  can't Update Subject : System can't  Update Subject من فضلك ادخل مدرس المادة الدراسية  
+[2024-03-11 21:07:34] local.ERROR:  can't Update Subject : System can't  Update Subject من فضلك ادخل مدرس المادة الدراسية  
+[2024-03-11 21:07:45] local.ERROR:  can't Update Teacher : System can't  Update Teacher Undefined variable $teacher  
+[2024-03-11 21:07:52] local.ERROR:  can't Update Teacher : System can't  Update Teacher Undefined variable $teacher  

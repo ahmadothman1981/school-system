@@ -10,7 +10,6 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\EmailResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Semester;
-use App\Models\Subject;
 
 
 
@@ -36,7 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'address',
         'photo',
         'notes',
-        'class',
+        'semester',
     ];
 
     /**
@@ -64,8 +63,5 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Semester::class);
     }
 
-    public function subjects()
-    {
-        return $this->belongsToMany(Subject::class);
-    }
+
 }

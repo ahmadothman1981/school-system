@@ -41,12 +41,12 @@ class StudentController extends Controller
         'date_of_birth'=>$request->date_of_birth,
         'notes'=>$request->notes,
         'photo'=>$new_image,
-        'class'=>$request->class,
+        'semester'=>$request->semester_id,
     ]);
     //piovet table attach
-       $class_id = $user->class;
-       $user->semesters()->attach($class_id);
-       $user->subjects()->attach($user->id);
+       $semester_id = $user->semester;
+       $user->semesters()->attach($semester_id);
+       
     Log::info(message:"Store Student : System  store Student with id {$user->id} successfully.");
     }
     catch(\Throwable $exception){
