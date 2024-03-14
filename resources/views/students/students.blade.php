@@ -32,7 +32,7 @@
 										<th class="c-table__cell c-table__cell--head">اسم المستخدم</th>
 										<th class="c-table__cell c-table__cell--head">التليفون</th>
 										<th class="c-table__cell c-table__cell--head">البريد الالكترونى</th>
-										<th class="c-table__cell c-table__cell--head">العنوان </th>
+										<th class="c-table__cell c-table__cell--head">الفصل الدراسى </th>
 										<th class="c-table__cell c-table__cell--head">ملاحظات</th>
 										<th class="c-table__cell c-table__cell--head"> تاريخ الميلاد </th>
 										<th class="c-table__cell c-table__cell--head"> تعديل </th>
@@ -42,6 +42,7 @@
 
 								<tbody>
 									@foreach ($users as $user)
+									@foreach($user->semesters as $semester)
 									<tr class="c-table__row">
 
 										<td class="c-table__cell">{{ $loop->iteration }}</td>
@@ -70,7 +71,7 @@
 										</td>
 										
 										<td class="c-table__cell">
-											<span class="c-badge c-badge--small c-badge--warning">{{$user->address}} </span>
+											<span class="c-badge c-badge--small c-badge--warning">{{$semester->name}} </span>
 										</td>
 										<td class="c-table__cell">
 											<div class="o-media__body">
@@ -97,7 +98,7 @@
 										</td>
 									</tr>	
 									@endforeach
-									
+									@endforeach
 								</tbody>
 							</table>
 						</div>

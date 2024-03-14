@@ -30,8 +30,8 @@
 									<tr class="c-table__row">
 										<th class="c-table__cell c-table__cell--head">#</th>
 										<th class="c-table__cell c-table__cell--head">المدرس </th>
-                                        <th class="c-table__cell c-table__cell--head">التليفون </th>
-										<th class="c-table__cell c-table__cell--head">الفصل الدراسى </th>
+                                        <th class="c-table__cell c-table__cell--head">المادة الدراسية </th>
+										<th class="c-table__cell c-table__cell--head">التليفون المحمول </th>
 										<th class="c-table__cell c-table__cell--head"> تعديل </th>
 
 									</tr>
@@ -39,6 +39,7 @@
 
 								<tbody>
 									@foreach ($teachers as $teacher)
+									@foreach($teacher->subjects as $subject)
 									<tr class="c-table__row">
 										<td class="c-table__cell">{{ $loop->iteration }}</td>
 										<td class="c-table__cell">
@@ -54,7 +55,7 @@
 											<div class="o-media">
 												<div class="o-media__body">
 													<a href="article-view.html">
-														<h6>  {{$teacher->phone}}</h6>
+														<h6>  {{$subject->name}}</h6>
 													</a>
 												</div>
 											</div>
@@ -63,12 +64,16 @@
 											<div class="o-media">
 												<div class="o-media__body">
 													<a href="article-view.html">
-														<h6>  {{$teacher->id}}</h6>
+														<h6>  {{$teacher->phone}}</h6>
 													</a>
 												</div>
 											</div>
 										</td>
+										
 										<td class="c-table__cell">
+											<a href="{{route('admin.show-teacher',$teacher->id)}}" class="c-btn c-btn--info has-icon">
+												عرض <i class="feather icon-wranch"></i>
+											</a>
 											<a href="{{route('admin.edit-teacher',$teacher->id)}}" class="c-btn c-btn--success has-icon">
 												تعديل <i class="feather icon-wranch"></i>
 											</a>
@@ -78,7 +83,7 @@
 										</td>
 									</tr>	
 									@endforeach
-									
+									@endforeach
 								</tbody>
 							</table>
 						</div>

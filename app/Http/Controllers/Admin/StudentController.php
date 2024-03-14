@@ -17,7 +17,7 @@ class StudentController extends Controller
     {
 
         $users = User::paginate(3);
-
+        //dd($users);
          return view("students.students",compact('users'));
     }
     public function create()
@@ -90,8 +90,9 @@ class StudentController extends Controller
             'date_of_birth'=>$request->date_of_birth,
             'notes'=>$request->notes,
             'photo'=>$update_image,
-            'class'=>$request->class,
+            'semester'=>$request->semester_id,
         ]);
+        $user->semesters()->sync($user->semester);
         Log::info(message:"Update Student : System  Update Student with id {$user->id} successfully.");
     }
     catch(\Throwable $exception){
@@ -111,7 +112,7 @@ class StudentController extends Controller
     {
         try{
             $user = User::findOrFail($id);
-            $user->semesters()->detach(semester_id);
+            $user->semesters()->detach($user->semester);
             $UserImage = $user->photo;
         
         if(!$UserImage == null)

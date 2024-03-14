@@ -44,8 +44,6 @@ class SubjectController extends Controller
             'teacher_id'=>$request->teacher_id,
             'semester_id'=>$request->semester_id,
         ]);
-        //piovet table attach
-      
        
 
 

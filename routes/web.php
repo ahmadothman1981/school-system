@@ -81,6 +81,7 @@ Route::controller(ClassesController::class)->prefix('classes')->group(function()
     Route::get('/{id}/edit','edit')->name('edit-teacher');
     Route::post('/update','update')->name('update-teacher');
     Route::get('/delete/{id}','delete')->name('delete-teacher');
+    Route::get('/{id}/show','show')->name('show-teacher');
   
  }); 
  

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
 use App\Models\Subject;
+use App\Models\Semester;
+
 use Illuminate\Support\Facades\Log;
 
 class TeacherController extends Controller
@@ -14,6 +16,7 @@ class TeacherController extends Controller
     public function index()
     {
         $teachers = Teacher::paginate(3);
+        
         return view('teachers.teachers',compact('teachers'));
     }
 
@@ -112,6 +115,15 @@ class TeacherController extends Controller
        
         return redirect()->route('admin.teachers')->with('warning','Teacher Deleted Successfully');
 
+    }
+
+    public function show($id)
+    {
+        $teacher = Teacher::find($id);
+       
+        
+    
+        return view('teachers.teacher_show',compact('teacher'));
     }
 
 }
