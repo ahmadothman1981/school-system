@@ -28,10 +28,10 @@
                     <div class="col-md-12 "><label class="labels">الإسم :</label>{{$teacher->name}}</div>
                 </div>
                 <div class="row mt-3 float-right">
-                    <div class="col-md-12 "><label class="labels">الهاتف المحمول</label>{{$teacher->phone}}</div>
+                    <div class="col-md-12 "><label class="labels">الهاتف المحمول:</label>{{$teacher->phone}}</div>
                   </div>
                   <div class="row mt-3 float-right">
-                    <div class="col-md-12"><label class="labels">الايميل الالكترونى</label>{{$teacher->email}}</div>
+                    <div class="col-md-12"><label class="labels">الايميل الالكترونى:</label>{{$teacher->email}}</div>
                   </div>
                 
                 <hr>

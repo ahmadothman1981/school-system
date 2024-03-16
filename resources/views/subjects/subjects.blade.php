@@ -52,6 +52,9 @@
 										
 										
 										<td class="c-table__cell">
+											<a href="{{route('admin.show-subjects',$subject->id)}}" class="c-btn c-btn--info has-icon">
+												عرض <i class="feather icon-wranch"></i>
+											</a>
 											<a href="{{route('admin.edit-subject',$subject->id)}}" class="c-btn c-btn--success has-icon">
 												تعديل <i class="feather icon-wranch"></i>
 											</a>

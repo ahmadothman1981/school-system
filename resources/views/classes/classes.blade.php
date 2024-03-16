@@ -31,7 +31,6 @@
 									<tr class="c-table__row">
 										<th class="c-table__cell c-table__cell--head">#</th>
 										<th class="c-table__cell c-table__cell--head">الفصل الدراسى</th>
-										<th class="c-table__cell c-table__cell--head">المادة الدراسية</th>
 										<th class="c-table__cell c-table__cell--head"> تعديل </th>
 
 									</tr>
@@ -39,7 +38,7 @@
 
 								<tbody>
 									@foreach ($classes as $class)
-									@foreach($class->subjects as $subject)
+									
 									<tr class="c-table__row">
 										<td class="c-table__cell">{{ $loop->iteration }}</td>
 										<td class="c-table__cell">
@@ -52,17 +51,11 @@
 											</div>
 											
 										</td>
+										
 										<td class="c-table__cell">
-											<div class="o-media">
-												<div class="o-media__body">
-													<a href="article-view.html">
-														<h6>  {{$subject->name}}</h6>
-													</a>
-												</div>
-											</div>
-											
-										</td>
-										<td class="c-table__cell">
+											<a href="{{route('admin.show-class',$class->id)}}" class="c-btn c-btn--info has-icon">
+												عرض <i class="feather icon-wranch"></i>
+											</a>
 											<a href="{{route('admin.edit-class',$class->id)}}" class="c-btn c-btn--success has-icon">
 												تعديل <i class="feather icon-wranch"></i>
 											</a>
@@ -71,7 +64,7 @@
 											</a>
 										</td>
 									</tr>	
-									@endforeach
+									
 									@endforeach
 								</tbody>
 							</table>

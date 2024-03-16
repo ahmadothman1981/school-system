@@ -57,6 +57,7 @@ Route::prefix('details')->name('admin.')->group(function(){
         Route::get('/{id}/edit','edit')->name('edit-student');
         Route::post('/update','update')->name('update-student');
         Route::get('/delete/{id}','delete')->name('delete-student');
+        Route::get('/{id}/show','show')->name('show-student');
 
     });
     
@@ -68,6 +69,7 @@ Route::controller(ClassesController::class)->prefix('classes')->group(function()
     Route::get('/{id}/edit','edit')->name('edit-class');
     Route::post('/update','update')->name('update-class');
     Route::get('/delete/{id}','delete')->name('delete-class');
+    Route::get('/{id}/show','show')->name('show-class');
 });
    
 
@@ -93,6 +95,7 @@ Route::controller(ClassesController::class)->prefix('classes')->group(function()
    Route::get('/{id}/edit','edit')->name('edit-subject');
    Route::post('/update','update')->name('update-subject');
    Route::get('/delete/{id}','delete')->name('delete-subject');
+   Route::get('/{id}/show','show')->name('show-subjects');
  
 });   
   

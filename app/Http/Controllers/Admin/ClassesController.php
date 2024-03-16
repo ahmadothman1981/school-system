@@ -96,4 +96,13 @@ class ClassesController extends Controller
         return redirect()->route('admin.classes')->with('warning','تم حذف الفصل الدراسى');
 
     }
+
+    public function show($id)
+    {
+        $class = Semester::find($id);
+       
+        
+    
+        return view('classes.show_class',compact('class'));
+    }
 }

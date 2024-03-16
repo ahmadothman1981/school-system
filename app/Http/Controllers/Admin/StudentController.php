@@ -136,6 +136,14 @@ class StudentController extends Controller
 
         return redirect()->route('admin.profiles')->with('warning','Student Deleted Successfully');
     }
+
+    public function show($id)
+    {
+        $student = User::find($id);
+     
+       
+        return view('students.show_student',compact('student'));
+    }
     
 
 

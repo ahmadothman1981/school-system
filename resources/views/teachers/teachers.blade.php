@@ -39,7 +39,7 @@
 
 								<tbody>
 									@foreach ($teachers as $teacher)
-									@foreach($teacher->subjects as $subject)
+									
 									<tr class="c-table__row">
 										<td class="c-table__cell">{{ $loop->iteration }}</td>
 										<td class="c-table__cell">
@@ -51,15 +51,7 @@
 												</div>
 											</div>
 										</td>
-										<td class="c-table__cell">
-											<div class="o-media">
-												<div class="o-media__body">
-													<a href="article-view.html">
-														<h6>  {{$subject->name}}</h6>
-													</a>
-												</div>
-											</div>
-										</td>
+										
 										<td class="c-table__cell">
 											<div class="o-media">
 												<div class="o-media__body">
@@ -82,7 +74,7 @@
 											</a>
 										</td>
 									</tr>	
-									@endforeach
+									
 									@endforeach
 								</tbody>
 							</table>

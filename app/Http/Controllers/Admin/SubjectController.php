@@ -121,4 +121,12 @@ class SubjectController extends Controller
 
     }
 
+    public function show($id)
+    {
+        $subject = Subject::find($id);
+       
+    
+        return view('subjects.show_subject',compact('subject'));
+    }
+
 }

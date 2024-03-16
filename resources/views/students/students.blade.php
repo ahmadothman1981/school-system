@@ -31,9 +31,7 @@
 										<th class="c-table__cell c-table__cell--head">#</th>
 										<th class="c-table__cell c-table__cell--head">اسم المستخدم</th>
 										<th class="c-table__cell c-table__cell--head">التليفون</th>
-										<th class="c-table__cell c-table__cell--head">البريد الالكترونى</th>
-										<th class="c-table__cell c-table__cell--head">الفصل الدراسى </th>
-										<th class="c-table__cell c-table__cell--head">ملاحظات</th>
+										<th class="c-table__cell c-table__cell--head">الفصل الدراسى </th>										
 										<th class="c-table__cell c-table__cell--head"> تاريخ الميلاد </th>
 										<th class="c-table__cell c-table__cell--head"> تعديل </th>
 
@@ -49,7 +47,7 @@
 										<td class="c-table__cell">
 											<div class="o-media">
 												<div class="o-media__body">
-													<a href="article-view.html">
+													<a href="{{route('admin.show-student',$user->id)}}">
 														<h6>  {{$user->name}}</h6>
 													</a>
 												</div>
@@ -64,22 +62,10 @@
 												</div>
 											</div>
 										</td>
-										
-
 										<td class="c-table__cell">
-											{{$user->email}}
+											<a href="{{route('admin.show-class',$semester->id)}}"><span class="c-badge c-badge--small c-badge--warning">{{$semester->name}} </span></a>
 										</td>
 										
-										<td class="c-table__cell">
-											<span class="c-badge c-badge--small c-badge--warning">{{$semester->name}} </span>
-										</td>
-										<td class="c-table__cell">
-											<div class="o-media__body">
-												<a href="article-view.html">
-													{{$user->notes}}
-												</a>
-											</div>
-										</td>
 										<td class="c-table__cell">
 											<div class="o-media__body">
 												<a href="article-view.html">
@@ -89,6 +75,9 @@
 										</td>
 										
 										<td class="c-table__cell">
+											<a href="{{route('admin.show-student',$user->id)}}" class="c-btn c-btn--info has-icon">
+												عرض <i class="feather icon-wranch"></i>
+											</a>
 											<a href="{{route('admin.edit-student',$user->id)}}" class="c-btn c-btn--success has-icon">
 												تعديل <i class="feather icon-wranch"></i>
 											</a>
