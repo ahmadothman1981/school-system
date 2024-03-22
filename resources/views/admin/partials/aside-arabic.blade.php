@@ -29,7 +29,7 @@
             </li>
             <li>
                 <a class="c-sidebar__link" href="pages.html">
-                    <i class="c-sidebar__icon feather icon-bar-chart-2"></i> الصفحات
+                    <i class="c-sidebar__icon feather icon-bar-chart-2"></i> الواجب المدرسى
                 </a>
             </li>
             <li>

@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 
+
 class StudentController extends Controller
 {
     public function index()
     {
 
-        $users = User::paginate(3);
-        //dd($users);
+        $users = User::all();
+       //dd($users);
          return view("students.students",compact('users'));
     }
     public function create()
@@ -28,10 +29,10 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request)
     {
 
-       try{ $image = $request->file('image');
+       try{/* $image = $request->file('image');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         $image-> move(public_path('/images/students'), $name_gen);
-        $new_image = 'images/students/'.$name_gen;
+        $new_image = 'images/students/'.$name_gen;*/
     $user = User::create([
         'name' => $request->name,
         'email' => $request->email,
@@ -40,9 +41,10 @@ class StudentController extends Controller
         'address'=>$request->address,
         'date_of_birth'=>$request->date_of_birth,
         'notes'=>$request->notes,
-        'photo'=>$new_image,
+        //'photo'=>$new_image,
         'semester'=>$request->semester_id,
     ]);
+    $user->addMediaFromRequest('image')->toMediaCollection('images');
     //piovet table attach
        $semester_id = $user->semester;
        $user->semesters()->attach($semester_id);
@@ -72,16 +74,7 @@ class StudentController extends Controller
         try{
             $UserId = $request->id;
         $user = User::find($UserId);
-        if($request->file('image'))
-        {
-            $update_image = $request->file('image');
-            unlink(public_path('/').$user->photo); 
-            $image_name = date('YmdHi').$update_image->getClientOriginalExtension();
-            $update_image->move(public_path('/images/students'), $image_name);
-        }else{
-            $update_image= $user->photo ;
-        }
-        User::FindOrFail($UserId)->update([
+       $update_user =  User::FindOrFail($UserId)->update([
             'name' => $request->name,
             'email' => $request->email,
             'phone'=>$request->phone,
@@ -89,12 +82,27 @@ class StudentController extends Controller
             'address'=>$request->address,
             'date_of_birth'=>$request->date_of_birth,
             'notes'=>$request->notes,
-            'photo'=>$update_image,
             'semester'=>$request->semester_id,
         ]);
+        if($request->file('image'))
+        {
+            $update_user=clearMediaCollection('images');
+            $update_user->addMediaFromRequest('image')->toMediaCollection('images');
+        }
         $user->semesters()->sync($user->semester);
         Log::info(message:"Update Student : System  Update Student with id {$user->id} successfully.");
-    }
+       /* if($request->file('image'))
+        {
+           $update_image = $request->file('image');
+            unlink(public_path('/').$user->photo); 
+            $image_name = date('YmdHi').$update_image->getClientOriginalExtension();
+            $update_image->move(public_path('/images/students'), $image_name);
+            else{
+                $update_image= $user->photo ;
+            }*/
+        }
+        
+    
     catch(\Throwable $exception){
     
         Log::error(message:" can't Update Student : System can't  Update Student ".$exception->getMessage());
@@ -113,13 +121,13 @@ class StudentController extends Controller
         try{
             $user = User::findOrFail($id);
             $user->semesters()->detach($user->semester);
-            $UserImage = $user->photo;
+           /* $UserImage = $user->photo;
         
         if(!$UserImage == null)
         {
             unlink($UserImage);
             $user = User::findOrFail($id);
-        }
+        }*/
         
         $user->delete();
         Log::info(message:"Delete Student : System  Delete Student  successfully.");
@@ -140,7 +148,7 @@ class StudentController extends Controller
     public function show($id)
     {
         $student = User::find($id);
-     
+        
        
         return view('students.show_student',compact('student'));
     }

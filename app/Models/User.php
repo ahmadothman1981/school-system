@@ -10,12 +10,15 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\EmailResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Semester;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 
 
-class User extends Authenticatable implements MustVerifyEmail
+
+class User extends Authenticatable implements MustVerifyEmail, HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable , InteractsWithMedia;
 
     public function SendPasswordResetNotification($token)
     {

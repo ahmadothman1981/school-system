@@ -40,6 +40,7 @@
 
 								<tbody>
 									@foreach ($users as $user)
+									
 									@foreach($user->semesters as $semester)
 									<tr class="c-table__row">
 
@@ -56,21 +57,21 @@
 										<td class="c-table__cell">
 											<div class="o-media">
 												<div class="o-media__body">
-													<a href="balagh.html">
+													
 														<h6> {{$user->phone}}</h6>
-													</a>
+													
 												</div>
 											</div>
 										</td>
 										<td class="c-table__cell">
-											<a href="{{route('admin.show-class',$semester->id)}}"><span class="c-badge c-badge--small c-badge--warning">{{$semester->name}} </span></a>
+											<a href="{{route('admin.show-class',$semester->id)}}"><span class="c-badge c-badge--small c-badge--danger">{{$semester->name}} </span></a>
 										</td>
 										
 										<td class="c-table__cell">
 											<div class="o-media__body">
-												<a href="article-view.html">
+												
 													{{$user->date_of_birth}}
-												</a>
+												
 											</div>
 										</td>
 										
@@ -93,7 +94,7 @@
 						</div>
 					</div>
 				</div>
-				{{$users->links()}}
+				
 				<div class="row">
 					<div class="col-12">
             @include('admin.partials.footer-arabic')
