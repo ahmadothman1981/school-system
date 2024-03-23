@@ -39,9 +39,9 @@
 								</thead>
 
 								<tbody>
-									@foreach ($users as $user)
+									@foreach($users as $user)
 									
-									@foreach($user->semesters as $semester)
+									
 									<tr class="c-table__row">
 
 										<td class="c-table__cell">{{ $loop->iteration }}</td>
@@ -54,6 +54,7 @@
 												</div>
 											</div>
 										</td>
+										
 										<td class="c-table__cell">
 											<div class="o-media">
 												<div class="o-media__body">
@@ -63,10 +64,16 @@
 												</div>
 											</div>
 										</td>
+										
+										@foreach($semesters as $semester )
+										@if($semester->id == $user->semester)
+										
+										
 										<td class="c-table__cell">
 											<a href="{{route('admin.show-class',$semester->id)}}"><span class="c-badge c-badge--small c-badge--danger">{{$semester->name}} </span></a>
 										</td>
-										
+										@endif
+										@endforeach
 										<td class="c-table__cell">
 											<div class="o-media__body">
 												
@@ -88,13 +95,14 @@
 										</td>
 									</tr>	
 									@endforeach
-									@endforeach
+									
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>
-				
+				{{$users->links()}}
+
 				<div class="row">
 					<div class="col-12">
             @include('admin.partials.footer-arabic')

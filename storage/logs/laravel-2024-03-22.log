@@ -1,12 +1,3 @@
-[2024-03-22 20:12:39] local.INFO: Store Student : System  store Student with id 7 successfully.  
-[2024-03-22 20:26:37] local.ERROR:  can't Update Student : System can't  Update Student Call to a member function clearMediaCollection() on bool  
-[2024-03-22 20:27:33] local.ERROR:  can't Update Student : System can't  Update Student Call to a member function clearMediaCollection() on bool  
-[2024-03-22 20:31:40] local.ERROR:  can't Update Student : System can't  Update Student Call to a member function addMediaFromRequest() on bool  
-[2024-03-22 20:32:27] local.ERROR:  can't Update Student : System can't  Update Student Call to a member function addMediaFromRequest() on bool  
-[2024-03-22 20:35:51] local.INFO: Update Student : System  Update Student with id 7 successfully.  
-[2024-03-22 20:38:53] local.INFO: Update Student : System  Update Student with id 6 successfully.  
-[2024-03-22 20:39:14] local.INFO: Update Student : System  Update Student with id 6 successfully.  
-[2024-03-22 20:47:36] local.ERROR:  can't Update Student : System can't  Update Student Call to undefined function App\Http\Controllers\Admin\clearMediaCollection()  
-[2024-03-22 20:48:15] local.ERROR:  can't Update Student : System can't  Update Student Call to undefined function App\Http\Controllers\Admin\clearMediaCollection()  
-[2024-03-22 20:48:29] local.ERROR:  can't Update Student : System can't  Update Student Call to undefined function App\Http\Controllers\Admin\clearMediaCollection()  
-[2024-03-22 20:48:41] local.ERROR:  can't Update Student : System can't  Update Student Call to undefined function App\Http\Controllers\Admin\clearMediaCollection()  
+[2024-03-22 21:24:41] local.ERROR:  can't Update Student : System can't  Update Student Call to a member function clearMediaCollection() on bool  
+[2024-03-22 21:26:50] local.INFO: Update Student : System  Update Student with id 8 successfully.  
+[2024-03-22 21:27:11] local.INFO: Update Student : System  Update Student with id 9 successfully.  

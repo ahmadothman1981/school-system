@@ -17,9 +17,10 @@ class StudentController extends Controller
     public function index()
     {
 
-        $users = User::all();
+        $users = User::paginate(3);
+        $semesters = Semester::all();
        //dd($users);
-         return view("students.students",compact('users'));
+         return view("students.students",compact('users','semesters'));
     }
     public function create()
     {       
@@ -71,6 +72,7 @@ class StudentController extends Controller
 
     public function update(UpdateStudentRequest $request)
     {
+        
         try{
             $UserId = $request->id;
         $user = User::find($UserId);
@@ -86,8 +88,9 @@ class StudentController extends Controller
         ]);
         if($request->file('image'))
         {
-            $update_user=clearMediaCollection('images');
-            $update_user->addMediaFromRequest('image')->toMediaCollection('images');
+            $user = User::find($UserId);
+            $user->clearMediaCollection('images');
+            $user->addMediaFromRequest('image')->toMediaCollection('images');
         }
         $user->semesters()->sync($user->semester);
         Log::info(message:"Update Student : System  Update Student with id {$user->id} successfully.");
