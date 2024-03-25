@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\ClassesController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\SubjectController;
+use App\Http\Controllers\Admin\HomeworkController;
+
 
 
 
@@ -99,7 +101,15 @@ Route::controller(ClassesController::class)->prefix('classes')->group(function()
  
 });   
   
-
+//Homework All Crud
+Route::controller(HomeworkController::class)->prefix('homework')->group(function(){
+    Route::get('/','index')->name('homework');
+    Route::get('/create','create')->name('assignment-create'); 
+    Route::post('/store','store')->name('store-assignment'); 
+    Route::get('/{id}/edit','edit')->name('edit-assignment');
+   
+ 
+});   
     
 });
 

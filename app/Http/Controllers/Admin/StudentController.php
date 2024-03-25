@@ -34,16 +34,18 @@ class StudentController extends Controller
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         $image-> move(public_path('/images/students'), $name_gen);
         $new_image = 'images/students/'.$name_gen;*/
+        $validatatedRequest = $request->validated();
+       
     $user = User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'phone'=>$request->phone,
+        'name' => $validatatedRequest['name'],
+        'email' => $validatatedRequest['email'],
+        'phone'=>$validatatedRequest['phone'],
         'password' => Hash::make('password'),
-        'address'=>$request->address,
-        'date_of_birth'=>$request->date_of_birth,
-        'notes'=>$request->notes,
+        'address'=>$validatatedRequest['address'],
+        'date_of_birth'=>$validatatedRequest['date_of_birth'],
+        'notes'=>$validatatedRequest['notes'],
         //'photo'=>$new_image,
-        'semester'=>$request->semester_id,
+        'semester'=>$validatatedRequest['semester_id'],
     ]);
     $user->addMediaFromRequest('image')->toMediaCollection('images');
     //piovet table attach
@@ -76,15 +78,16 @@ class StudentController extends Controller
         try{
             $UserId = $request->id;
         $user = User::find($UserId);
+        $validatatedRequest = $request->validated();
        $update_user =  User::FindOrFail($UserId)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone'=>$request->phone,
-            'password' => Hash::make('password'),
-            'address'=>$request->address,
-            'date_of_birth'=>$request->date_of_birth,
-            'notes'=>$request->notes,
-            'semester'=>$request->semester_id,
+        'name' => $validatatedRequest['name'],
+        'email' => $validatatedRequest['email'],
+        'phone'=>$validatatedRequest['phone'],
+        'password' => Hash::make('password'),
+        'address'=>$validatatedRequest['address'],
+        'date_of_birth'=>$validatatedRequest['date_of_birth'],
+        'notes'=>$validatatedRequest['notes'],
+        'semester'=>$validatatedRequest['semester_id'],
         ]);
         if($request->file('image'))
         {
@@ -152,6 +155,7 @@ class StudentController extends Controller
     {
         $student = User::find($id);
         
+      
        
         return view('students.show_student',compact('student'));
     }

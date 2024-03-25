@@ -29,6 +29,7 @@ class StoreStudentRequest extends FormRequest
             'date_of_birth'=>['required','date'],
             'image'=>'extensions:png,jpg,jpeg',
             'notes'=>['string', 'max:255'],
+            'semester_id'=>['required']
            
         ];
     }
@@ -44,6 +45,7 @@ class StoreStudentRequest extends FormRequest
             'phone.numeric' => 'منفضلك ادخل رقم تليفون صحيح.',
             'date_of_birth.required'=>'تاريخ الميلاد مطلوب',
             'image.extensions' => 'الصورة يجب ان تكون بامتداد png jpg jpeg .',
+            'semester_id'=>'مطلوب اختيار الفصل الدراسى'
 
 
         ];

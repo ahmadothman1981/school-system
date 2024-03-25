@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li>
-                <a class="c-sidebar__link" href="pages.html">
+                <a class="c-sidebar__link" href="{{route('admin.homework')}}">
                     <i class="c-sidebar__icon feather icon-bar-chart-2"></i> الواجب المدرسى
                 </a>
             </li>

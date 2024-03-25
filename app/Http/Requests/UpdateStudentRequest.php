@@ -29,6 +29,7 @@ class UpdateStudentRequest extends FormRequest
             'date_of_birth'=>['required','date'],
             'image'=>'extensions:png,jpg,jpeg',
             'notes'=>['string', 'max:255'],
+            'semester_id'=>['required']
            
         ];
     }
@@ -45,6 +46,8 @@ class UpdateStudentRequest extends FormRequest
             'phone.numeric' => 'Please enter a valid phone number.',
             'date_of_birth.required'=>'please enter birth day student',
             'image.extensions' => 'The file must be image file png jpg jpeg .',
+            'semester_id'=>'مطلوب اختيار الفصل الدراسى',
+
 
 
         ];

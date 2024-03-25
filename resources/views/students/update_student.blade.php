@@ -60,7 +60,7 @@
                                 <div class="c-field col-md-6">
                                     <label class="status">الفصل الدراسى</label>
                                     
-                                    <select name="" id="" class="c-input u-mb-small">
+                                    <select name="semester_id" id="" class="c-input u-mb-small">
                                         @foreach($classes as $class)
                                         <option value="{{$class->id}}">{{$class->name}}</option>
                                         @endforeach

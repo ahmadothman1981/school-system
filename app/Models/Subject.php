@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Teacher;
 use App\Models\Semester;
+use App\Models\Assignment;
+
 
 
 
@@ -28,5 +30,10 @@ class Subject extends Model
     {
        return  $this->belongsTo(Semester::class,'semester_id');
     }
+
+    public function  assignment()
+  {
+    return $this->hasMany(Assignment::class,'subject_id');
+  }
     
 }
