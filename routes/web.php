@@ -107,6 +107,9 @@ Route::controller(HomeworkController::class)->prefix('homework')->group(function
     Route::get('/create','create')->name('assignment-create'); 
     Route::post('/store','store')->name('store-assignment'); 
     Route::get('/{id}/edit','edit')->name('edit-assignment');
+    Route::post('/update','update')->name('update-assignment');
+    Route::get('/delete/{id}','delete')->name('delete-asignment');
+    Route::get('/{id}/show','show')->name('show-assignment');
    
  
 });   

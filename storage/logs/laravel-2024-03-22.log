@@ -1,3 +1,0 @@
-[2024-03-22 21:24:41] local.ERROR:  can't Update Student : System can't  Update Student Call to a member function clearMediaCollection() on bool  
-[2024-03-22 21:26:50] local.INFO: Update Student : System  Update Student with id 8 successfully.  
-[2024-03-22 21:27:11] local.INFO: Update Student : System  Update Student with id 9 successfully.  

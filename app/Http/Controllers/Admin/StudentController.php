@@ -76,8 +76,8 @@ class StudentController extends Controller
     {
         
         try{
-            $UserId = $request->id;
-        $user = User::find($UserId);
+         $UserId = $request->id;
+         $user = User::find($UserId);
         $validatatedRequest = $request->validated();
        $update_user =  User::FindOrFail($UserId)->update([
         'name' => $validatatedRequest['name'],
@@ -90,8 +90,8 @@ class StudentController extends Controller
         'semester'=>$validatatedRequest['semester_id'],
         ]);
         if($request->file('image'))
-        {
-            $user = User::find($UserId);
+        {  
+            
             $user->clearMediaCollection('images');
             $user->addMediaFromRequest('image')->toMediaCollection('images');
         }

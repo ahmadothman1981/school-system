@@ -81,13 +81,13 @@
 										</td>
 										
 										<td class="c-table__cell">
-											<a href="" class="c-btn c-btn--info has-icon">
+											<a href="{{route('admin.show-assignment',$assignment->id)}}" class="c-btn c-btn--info has-icon">
 												عرض <i class="feather icon-wranch"></i>
 											</a>
 											<a href="{{route('admin.edit-assignment',$assignment->id)}}" class="c-btn c-btn--success has-icon">
 												تعديل <i class="feather icon-wranch"></i>
 											</a>
-											<a href="" id="delete" class="c-btn c-btn--danger has-icon">
+											<a href="{{route('admin.delete-asignment',$assignment->id)}}" id="delete" class="c-btn c-btn--danger has-icon">
 												حذف <i class="feather icon-wranch"></i>
 											</a>
 										</td>

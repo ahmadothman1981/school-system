@@ -21,7 +21,7 @@
                 <div class="c-alert c-alert--info u-mb-medium">
 
                     <div class="c-alert__content">
-                        <form method="POST" action="" enctype="multipart/form-data">
+                        <form method="POST" action="{{route('admin.update-assignment')}}" enctype="multipart/form-data">
                             <input type="hidden" name="id" value="{{$assignment->id}}">
                             @csrf
                             <div class="row">
@@ -56,7 +56,7 @@
                                     
                                     <select name="semester_id"  class="c-input u-mb-small">
                                         @foreach($semesters as $semester)
-                                        <option value="{{$semester->id}}" {{old('semester_id') == $semester->id ? 'selected' : ''}}>{{$semester->name}}</option>
+                                        <option value="{{$semester->id}}" {{(old('semester_id',$assignment->semester_id) == $semester->id) ? 'selected' : ''}}>{{$semester->name}}</option>
                                         @endforeach
                                     </select>
                                     
@@ -67,7 +67,7 @@
                               
                               <select name="subject_id"  class="c-input u-mb-small">
                                   @foreach($subjects as $subject)
-                                  <option value="{{$subject->id}}"{{old('sujbect_id') == $subject->id ? 'selected' : ''}} >{{$subject->name}}</option>
+                                  <option value="{{$subject->id}}" {{(old('subject_id',$assignment->subject_id) == $subject->id) ? 'selected' : ''}}>{{$subject->name}}</option>
                                   @endforeach
                               </select>
                               
@@ -81,17 +81,16 @@
                             </div>
                           
                             <div class="c-field">
+                                <label class="Image">الصورة</label>
                                 @if($errors->has('image'))
                                 <span class="text-danger">*{{ $errors->first('image') }}</span>
-                                 @endif
-                                <label class="Image">الصورة</label>
-                                
-                                <input type="file" name="image" class="c-input u-mb-small" placeholder="الصوره" id="Image">
+                                 @endif                     
+                                <input type="file" name="image"  class="c-input u-mb-small" placeholder="الصوره" id="Image">
                                
                             </div>
                             
 
-                            <button class="c-btn c-btn--fullwidth c-btn--info">حفظ </button>
+                            <button class="c-btn c-btn--fullwidth c-btn--info">تحديث </button>
                         </form>
 
         </div>
