@@ -110,6 +110,7 @@ Route::controller(HomeworkController::class)->prefix('homework')->group(function
     Route::post('/update','update')->name('update-assignment');
     Route::get('/delete/{id}','delete')->name('delete-asignment');
     Route::get('/{id}/show','show')->name('show-assignment');
+    Route::get('/{id}/download','download')->name('download');
    
  
 });   

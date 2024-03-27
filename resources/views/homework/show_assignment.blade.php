@@ -17,7 +17,8 @@
       <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
             <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{{$assignment->getFirstMediaUrl('assignments')}}"><span class="font-weight-bold">{{$assignment->name}}</span><span class="text-black-50"></span><span> </span></div>
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{{$assignment->getFirstMediaUrl('assignments')}}"><span class="font-weight-bold">{{$assignment->name}}</span><span class="text-black-50"></span><span> </span><a href="{{route('admin.download',$assignment->id)}}" class="c-btn c-btn--info has-icon">Download</a></div>
+                
             </div>
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">

@@ -11,6 +11,7 @@ use App\Models\Subject;
 use App\Http\Requests\StoreAssignmentRequest;
 use App\Http\Requests\UpdateAssignmentRequest;
 use Illuminate\Support\Facades\Log;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 
 
@@ -147,6 +148,13 @@ class HomeworkController extends Controller
       
        
         return view('homework.show_assignment',compact('assignment'));
+    }
+
+    public function download($id)
+    {
+        $assignment = Assignment::find($id)->getMedia('assignments');
+
+        return response()->download($assignment[0]->getPath(), $assignment[0]->file_name);
     }
 
     
